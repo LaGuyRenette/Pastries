@@ -1,0 +1,35 @@
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="ref">Reference:</label>
+    <input type="text" id="ref" name="ref" [(ngModel)]="recipe.ref" required>
+  </div>
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="recipe.name" required>
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" [(ngModel)]="recipe.description" required></textarea>
+  </div>
+  <div>
+    <label for="url">Image URL:</label>
+    <input type="text" id="url" name="url" [(ngModel)]="recipe.url">
+  </div>
+  <div>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" [(ngModel)]="recipe.quantity" required>
+  </div>
+  <div>
+    <label for="order">Order:</label>
+    <input type="number" id="order" name="order" [(ngModel)]="recipe.order" required>
+  </div>
+  <div>
+    <label for="like">Like:</label>
+    <input type="text" id="like" name="like" [(ngModel)]="recipe.like">
+  </div>
+  <div>
+    <label for="choice">Choice:</label>
+    <input type="checkbox" id="choice" name="choice" [(ngModel)]="recipe.choice">
+  </div>
+  <button type="submit">Submit</button>
+</form>
