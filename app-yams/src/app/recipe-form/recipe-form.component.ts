@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Pastrie } from '../pastrie';
 import { PastriesService } from '../pastries.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-recipe-form',
@@ -21,7 +22,7 @@ export class RecipeFormComponent  implements OnInit  {
     url: '',
     choice: false
   };
-  constructor(private route: ActivatedRoute, private ps: PastriesService){}
+  constructor(private route: ActivatedRoute, private ps: PastriesService, private router: Router){}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) =>{
@@ -36,7 +37,7 @@ export class RecipeFormComponent  implements OnInit  {
   }
 
   onSubmit():void{
-    this.ps.addOrUpdateRecipe(this.recipe).subscribe(response=>{
+    this.ps.addRecipe(this.recipe).subscribe(response=>{
       console.log("success!", response);
       this.recipe = {
         id: '',
@@ -49,6 +50,7 @@ export class RecipeFormComponent  implements OnInit  {
         like: '',
         choice: false
       };
+      this.router.navigate(['/home']);
     }, error =>{
       console.error("Echec", error);
     }

@@ -80,7 +80,8 @@ addPastrie(): void {
     like: '',
     choice: false,
   };
-  this.ps.addOrUpdateRecipe(newPastrie).subscribe((pastrie) => {
+  this.ps.addRecipe(newPastrie).subscribe((pastrie) => {
+    
     if (pastrie) {
       console.log('Recette ajoutée:', pastrie);
     } else {
@@ -90,7 +91,7 @@ addPastrie(): void {
 }
 modifyPastrie() {
   if (this.currentPastrie) {
-    this.ps.addOrUpdateRecipe(this.currentPastrie)
+    this.ps.updateRecipe(this.currentPastrie)
       .pipe(
         catchError(error => {
           console.error('Erreur lors de la modification de la recette:', error);

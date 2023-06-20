@@ -7,6 +7,7 @@
   <app-pagination  (paginate)="paginate($event)"></app-pagination>
   <!-- On récupère la valeur $event de l'enfant -->
   <div class="col-sm-4">
+
     <div class="sticky">
     <app-pastrie-details 
     [pastrie]="currentPastrie" 
@@ -23,9 +24,9 @@
         (click)="onSelect(pastrie)"
         [appBorderCard]="color"
       >
+      
         <header class="card-header">
           <h2>{{ pastrie.ref }}</h2>
-          <button (click)="addPastrie()">Ajouter une recette</button>
           <button (click)="modifyPastrie()">Modifier une recette</button>
           <button (click)="deletePastrie()">Supprimer une recette</button>
         </header>
@@ -57,7 +58,6 @@
       </article>
     </section>
   </div>
-  <app-recipe-form></app-recipe-form>
   <!-- du template vers le TS (event)="function(arg)" -->
   <app-pagination  (paginate)="paginate($event)" ></app-pagination>
   <!-- .pagination -->

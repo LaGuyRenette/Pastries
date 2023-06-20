@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'home', component: PastriesComponent },
   { path: '',   redirectTo: '/home', pathMatch: 'full' }, // redirect to `first-component`
   { path: 'register', component : RegisterComponent}, // redirect to `first-component`
-   {path:'recette/:id', component: RecipeFormComponent},
+  {path:'recette', component: RecipeFormComponent},
+  {path:'recette/:id', component: RecipeFormComponent},
   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 

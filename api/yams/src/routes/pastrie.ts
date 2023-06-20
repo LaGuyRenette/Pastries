@@ -2,23 +2,38 @@ import express, { Router, Request, Response } from "express";
 import { PASTRIES as pastries } from "./../mocks";
 import { Pastrie } from "./../pastrie";
 
+
+
+
 const router: Router = express.Router();
 
 // optimisation dans le comptage des pastries 
 const COUNT : number = pastries.length;
 
+//factoriser les responses 
+
+function sendResponse(res: Response, data: any){
+    if(data){
+        res.json(data);
+    }else{
+        res.sendStatus(404)
+        console.log("pastriestssendresponse")
+    }
+}
+
 // all pastries
 router.get("/pastries", function (req: Request, res: Response) {
-    res.json(pastries);
+    sendResponse(res, pastries);
+    //res.json(pastries);
 });
 
 // id pastries
-router.get("/pastrie/:id", function (req: Request, res: Response) {
+router.get("/pastrie/{id}", function (req: Request, res: Response) {
     const id: string = req.params.id
     const p: Pastrie | undefined = pastries.find(p => p.id == id);
+    sendResponse(res, p)
 
-    if (p)
-        res.json(p);
+    //if (p){res.json(p);}else{res.sendStatus(404);}
 });
 
 router.get("/pastries-search/:word", function (req: Request, res: Response) {
@@ -28,8 +43,8 @@ router.get("/pastries-search/:word", function (req: Request, res: Response) {
     // by quantity order 
     const p: Pastrie[] = pastries.filter(p => p.name.match(re));
 
-    if (p)
-        res.json(p);
+    sendResponse(res,p);
+
 });
 
 /**
@@ -43,8 +58,7 @@ router.get("/pastries/:start?/:end", function (req: Request, res: Response) {
 
     let p: Pastrie[] = end ? pastries.slice(parseInt(start), parseInt(end) + 1) : pastries.slice(parseInt(start))
 
-    if (p)
-        res.json(p);
+  sendResponse(res, p)
 });
 
 // même requete mais ordonné
@@ -57,8 +71,7 @@ router.get("/pastries/order-quantity/:start?/:end", function (req: Request, res:
 
     const p: Pastrie[] = end ? pastries.slice(parseInt(start), parseInt(end) + 1) : pastries.slice(parseInt(start))
 
-    if (p)
-        res.json(p);
+    sendResponse(res, p)
 });
 
 // count number pastries 
@@ -67,6 +80,16 @@ router.get("/pastries-count", function (req: Request, res: Response) {
 });
 
 //CRUD PASTRIES
+//créer
+router.post("/pastries", function (req:Request, res: Response){
+    
+    const newPastries : Pastrie = req.body;
+
+    pastries.push(newPastries);
+
+    res.status(201).json(newPastries);
+    
+})
 //modifier
 router.put("/pastries/:id", function (req: Request, res: Response) {
     const id :string = req.params.id;
@@ -80,12 +103,14 @@ router.put("/pastries/:id", function (req: Request, res: Response) {
         pastries[PastrieIndex] = updatePastries;
         res.status(200).json(updatePastries);
     }else{
-        res.status(404).json({error: "Not Found"});
+        console.log("l'erreur est-elle la?");
+        res.status(404).json({error: "Not Found/pastriesput"});
     }
 });
+    
 
 router.get('*', function (req: Request, res: Response) {
-    res.status(404).json({ error: "Not found" })
+    res.status(404).json({ error: "Not found / pastriets" })
 });
 
 export default router;

@@ -63,20 +63,23 @@ export class PastriesService {
     
     
   }
-  
-  addOrUpdateRecipe(recipe: Pastrie): Observable<Pastrie> {
-    if (recipe.id) {
-      // Utilisé put pour update recipe qui a déja un id
-      const url = `${this.pastriesUrl}/${recipe.id}`;
-      return this.http.put<Pastrie>(url, recipe, httpOptions);
-    } else {
-      // si il n'y a pas déja d'id post permet de l'inclure 
-      return this.http.post<Pastrie>(this.pastriesUrl, recipe, httpOptions);
-    }
-  }
-  deleteRecipe(recipeId: string): Observable<void> {
-    const url = `${this.pastriesUrl}/${recipeId}`;
-    return this.http.delete<void>(url, httpOptions);
-  }
+//créer un id lors de création de recette 
+
+addRecipe(recipe: Pastrie): Observable<Pastrie> {
+  const timestamp = new Date().getTime();
+  recipe.id = timestamp.toString();
+
+  return this.http.post<Pastrie>(this.pastriesUrl, recipe, httpOptions);
+}
+
+updateRecipe(recipe: Pastrie): Observable<Pastrie> {
+  const url = `${this.pastriesUrl}/${recipe.id}`;
+  return this.http.put<Pastrie>(url, recipe, httpOptions);
+}
+
+deleteRecipe(recipeId: string): Observable<void> {
+  const url = `${this.pastriesUrl}/${recipeId}`;
+  return this.http.delete<void>(url, httpOptions);
+}
 }
 
