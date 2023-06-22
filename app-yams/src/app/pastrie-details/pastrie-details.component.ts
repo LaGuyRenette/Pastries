@@ -9,7 +9,8 @@ import { Max } from "../mock-pastries"
   styleUrls: ['./pastrie-details.component.scss'],
 })
 export class PastrieDetailsComponent {
-  @Input() bar: string = '';
+  
+  
   @Input() pastrie: Pastrie | null = null;
   @Input() count: number | null = null;
   // pour sortir de l'enfant vers ... Un parent avec un emit 

@@ -1,0 +1,19 @@
+<button class="add-button" (click)="navigateToCreatePastries()">Ajouter une recette</button>
+<p>pastrie-sample works!</p>
+<div *ngFor="let pastrie of pastries" class="card">
+  <div class="card-header" (click)="toggleCard(pastrie.id)">
+    <h5>{{ pastrie.name }}</h5>
+    <p>Référence: {{ pastrie.ref }}</p>
+    <ul>
+      <li *ngFor="let tag of pastrie.tags">{{ tag }}</li>
+    </ul>
+  </div>
+  <div class="card-body" *ngIf="selectedPastrieId === pastrie.id">
+    <p>Description: {{ pastrie.description }}</p>
+    <p>URL: {{ pastrie.url }}</p>
+    <p>Quantité: {{ pastrie.quantity }}</p>
+    <p>Order: {{ pastrie.order }}</p>
+    <p>Like: {{ pastrie.like }}</p>
+    <p>Choice: {{ pastrie.choice }}</p>
+  </div>
+</div>

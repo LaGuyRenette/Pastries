@@ -1,6 +1,7 @@
+<a class="navbar-brand" href="#"><h1 class="text-center" >{{ title }}</h1></a>
 <div class="container-fuild principal">
   <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">{{ title }}</a>
+    
     <button
       class="navbar-toggler"
       type="button"
@@ -29,15 +30,16 @@
         <li class="nav-item active">
           
           <a 
-            routerLink="/recette" 
+            routerLink="/sample" 
             routerLinkActive="active" 
             class="nav-link" 
             ariaCurrentWhenActive="page"
-          >Add a recipe</a>
+          >Sample</a>
         </li>
       </ul>
     </div>
     <p>{{ clock$ | async }}</p>
   </nav>
+  
     <router-outlet></router-outlet>
 </div>

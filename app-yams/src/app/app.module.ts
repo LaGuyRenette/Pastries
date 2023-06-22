@@ -12,7 +12,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SearchComponent } from './search/search.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { RegisterComponent } from './register/register.component';
-import { RecipeFormComponent } from './recipe-form/recipe-form.component';
+import { PastrieSampleComponent } from './pastrie-sample/pastrie-sample.component';
+import { CreatePastriesComponent } from './create-pastries/create-pastries.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
     SearchComponent,
     PaginationComponent,
     RegisterComponent,
-    RecipeFormComponent
+    PastrieSampleComponent,
+    CreatePastriesComponent,
+
   ],
   imports: [
     BrowserModule,

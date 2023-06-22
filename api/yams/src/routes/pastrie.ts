@@ -1,7 +1,7 @@
 import express, { Router, Request, Response } from "express";
 import { PASTRIES as pastries } from "./../mocks";
 import { Pastrie } from "./../pastrie";
-
+import * as recipeController from "../controllers/recipeControllers";
 
 
 
@@ -9,6 +9,7 @@ const router: Router = express.Router();
 
 // optimisation dans le comptage des pastries 
 const COUNT : number = pastries.length;
+
 
 //factoriser les responses 
 
@@ -56,7 +57,9 @@ router.get("/pastries/:start?/:end", function (req: Request, res: Response) {
     const start: string = req.params.start;
     const end: string = req.params.end;
 
-    let p: Pastrie[] = end ? pastries.slice(parseInt(start), parseInt(end) + 1) : pastries.slice(parseInt(start))
+    let p: Pastrie[] = end 
+    ? pastries.slice(parseInt(start), parseInt(end) + 1) 
+    : pastries.slice(parseInt(start))
 
   sendResponse(res, p)
 });
@@ -78,36 +81,12 @@ router.get("/pastries/order-quantity/:start?/:end", function (req: Request, res:
 router.get("/pastries-count", function (req: Request, res: Response) {
     res.json(COUNT);
 });
+//crud
+router.post('/pastries', recipeController.createPastrie);
+router.get('/pastries/:id', recipeController.getRecipe);
+router.put('/pastries/:id', recipeController.updateRecipe);
+router.delete('/pastries/:id', recipeController.deleteRecipe);
 
-//CRUD PASTRIES
-//créer
-router.post("/pastries", function (req:Request, res: Response){
-    
-    const newPastries : Pastrie = req.body;
-
-    pastries.push(newPastries);
-
-    res.status(201).json(newPastries);
-    
-})
-//modifier
-router.put("/pastries/:id", function (req: Request, res: Response) {
-    const id :string = req.params.id;
-    const updatePastries: Pastrie = req.body;
-
-    //quelle recette?
-
-    const PastrieIndex: number = pastries.findIndex(p => p.id === id);
-
-    if (PastrieIndex !== -1){
-        pastries[PastrieIndex] = updatePastries;
-        res.status(200).json(updatePastries);
-    }else{
-        console.log("l'erreur est-elle la?");
-        res.status(404).json({error: "Not Found/pastriesput"});
-    }
-});
-    
 
 router.get('*', function (req: Request, res: Response) {
     res.status(404).json({ error: "Not found / pastriets" })

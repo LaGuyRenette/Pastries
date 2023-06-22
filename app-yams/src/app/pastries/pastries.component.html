@@ -4,13 +4,13 @@
   
   <!-- .pagination -->
   <app-pagination (paginate)="paginate($event)"></app-pagination>
-  <app-pagination  (paginate)="paginate($event)"></app-pagination>
+
   <!-- On récupère la valeur $event de l'enfant -->
   <div class="col-sm-4">
 
     <div class="sticky">
     <app-pastrie-details 
-    [pastrie]="currentPastrie" 
+    [pastrie]="selectedPastrie" 
     [count]="count"
     (changePreference)="changeParentPreference($event)"
     ></app-pastrie-details>
@@ -27,8 +27,6 @@
       
         <header class="card-header">
           <h2>{{ pastrie.ref }}</h2>
-          <button (click)="modifyPastrie()">Modifier une recette</button>
-          <button (click)="deletePastrie()">Supprimer une recette</button>
         </header>
 
         <section class="card-body">

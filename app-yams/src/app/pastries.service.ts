@@ -61,25 +61,9 @@ export class PastriesService {
     console.log(url);
     return this.http.get<Pastrie>(url, httpOptions)
     
-    
   }
-//créer un id lors de création de recette 
 
-addRecipe(recipe: Pastrie): Observable<Pastrie> {
-  const timestamp = new Date().getTime();
-  recipe.id = timestamp.toString();
-
-  return this.http.post<Pastrie>(this.pastriesUrl, recipe, httpOptions);
+  createPastrie(pastrie: Pastrie): Observable<Pastrie> {
+    return this.http.post<Pastrie>(this.pastriesUrl, pastrie, httpOptions);
+  }
 }
-
-updateRecipe(recipe: Pastrie): Observable<Pastrie> {
-  const url = `${this.pastriesUrl}/${recipe.id}`;
-  return this.http.put<Pastrie>(url, recipe, httpOptions);
-}
-
-deleteRecipe(recipeId: string): Observable<void> {
-  const url = `${this.pastriesUrl}/${recipeId}`;
-  return this.http.delete<void>(url, httpOptions);
-}
-}
-
