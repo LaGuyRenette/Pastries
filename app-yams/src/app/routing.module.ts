@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { PastrieSampleComponent } from './pastrie-sample/pastrie-sample.component';
 import { CreatePastriesComponent } from './create-pastries/create-pastries.component';
 import { PastrieDetailsComponent } from './pastrie-details/pastrie-details.component';
+import { UpdatePastrieComponent } from './update-pastrie/update-pastrie.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'register', component : RegisterComponent}, // redirect to `first-component`
   {path:'sample', component: PastrieSampleComponent},
   {path:'createPastrie', component: CreatePastriesComponent},
+  { path: 'updatePastrie/:id', component: UpdatePastrieComponent },
   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 

@@ -1,0 +1,98 @@
+<form [formGroup]="pastrieForm" (submit)="updatePastrie()" class="neumorphism-form">
+    <fieldset>
+      <legend>Modification de la Patisserie</legend>
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input type="text" id="name" formControlName="name" class="form-control">
+        <div *ngIf="pastrieForm.get('name')?.invalid && pastrieForm.get('name')?.touched" class="invalid-feedback">
+          <div *ngIf="pastrieForm.get('name')?.errors?.['required']">
+            Le nom est requis
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="ref">Référence</label>
+        <input type="text" id="ref" formControlName="ref" class="form-control">
+        <div *ngIf="pastrieForm.get('ref')?.invalid && pastrieForm.get('ref')?.touched" class="invalid-feedback">
+          <div *ngIf="pastrieForm.get('ref')?.errors?.['required']">
+            La référence est requise
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" id="description" formControlName="description" class="form-control">
+        <div *ngIf="pastrieForm.get('description')?.invalid && pastrieForm.get('description')?.touched" class="invalid-feedback">
+          <div *ngIf="pastrieForm.get('description')?.errors?.['required']">
+            La description est requise
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="url">URL</label>
+        <input type="text" id="url" formControlName="url" class="form-control">
+        <div *ngIf="pastrieForm.get('url')?.invalid && pastrieForm.get('url')?.touched" class="invalid-feedback">
+          <div *ngIf="pastrieForm.get('url')?.errors?.['required']">
+            L'URL est requise
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="quantity">Quantité</label>
+        <input type="number" id="quantity" formControlName="quantity" class="form-control">
+        <div *ngIf="pastrieForm.get('quantity')?.invalid && pastrieForm.get('quantity')?.touched" class="invalid-feedback">
+          <div *ngIf="pastrieForm.get('quantity')?.errors?.['required']">
+            La quantité est requise
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="order">Order</label>
+        <input type="number" id="order" formControlName="order" class="form-control">
+        <div *ngIf="pastrieForm.get('order')?.invalid && pastrieForm.get('order')?.touched" class="invalid-feedback">
+          <div *ngIf="pastrieForm.get('order')?.errors?.['required']">
+            L'Order'est requise
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <input type="text" id="tags" formControlName="tags" class="form-control">
+        <div *ngIf="pastrieForm.get('tags')?.invalid && pastrieForm.get('tags')?.touched" class="invalid-feedback">
+          <div *ngIf="pastrieForm.get('tags')?.errors?.['required']">
+            Les tags sont requis
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="like">Like</label>
+        <input type="text" id="like" formControlName="like" class="form-control">
+        <div *ngIf="pastrieForm.get('like')?.invalid && pastrieForm.get('like')?.touched" class="invalid-feedback">
+          <div *ngIf="pastrieForm.get('like')?.errors?.['required']">
+            Le champ Like est requis
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="choice">Choix</label>
+        <input type="text" id="choice" formControlName="choice" class="form-control">
+        <div *ngIf="pastrieForm.get('choice')?.invalid && pastrieForm.get('choice')?.touched" class="invalid-feedback">
+          <div *ngIf="pastrieForm.get('choice')?.errors?.['required']">
+            Le choix est requis
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  
+    <button type="submit" [disabled]="pastrieForm.invalid" class="btn btn-primary">Mettre à jour</button>
+  </form>
+  
+  <p *ngIf="newPastrie">YES!! {{ newPastrie.name }} a bien été créée !!</p>

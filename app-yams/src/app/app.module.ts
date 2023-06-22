@@ -14,6 +14,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { RegisterComponent } from './register/register.component';
 import { PastrieSampleComponent } from './pastrie-sample/pastrie-sample.component';
 import { CreatePastriesComponent } from './create-pastries/create-pastries.component';
+import { UpdatePastrieComponent } from './update-pastrie/update-pastrie.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CreatePastriesComponent } from './create-pastries/create-pastries.compo
     RegisterComponent,
     PastrieSampleComponent,
     CreatePastriesComponent,
+    UpdatePastrieComponent,
 
   ],
   imports: [

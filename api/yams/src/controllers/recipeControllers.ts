@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { Pastrie } from '../pastrie';
+import { PASTRIES } from '../mocks';
 
-let recipes : Pastrie[]= []; //tableau pour stocker mes pastries
+let recipes : Pastrie[]= PASTRIES; //tableau pour stocker mes pastries
 const { v4: uuidv4 } = require('uuid');
 
 //CREATE 
@@ -41,7 +42,7 @@ export const createPastrie = (req: Request,res: Response)=> {
   };
   
   // Mettre à jour une recette
-  export const updateRecipe = (req: Request, res: Response) => {
+  export const updatePastrie = (req: Request, res: Response) => {
     const recipeId = req.params.id;
     const { ref, name, description, quantity, order, like, tags } = req.body;
   
@@ -65,7 +66,7 @@ export const createPastrie = (req: Request,res: Response)=> {
   };
   
   // Supprimer une recette
-  export const deleteRecipe = (req: Request, res: Response) => {
+  export const deletePastrie = (req: Request, res: Response) => {
     const recipeId = req.params.id;
   
     // Rechercher l'index de la recette dans le tableau des recettes en fonction de son ID
@@ -81,4 +82,4 @@ export const createPastrie = (req: Request,res: Response)=> {
     }
   };
 
-export default { createPastrie, getRecipe, updateRecipe, deleteRecipe };
+export default { createPastrie, getRecipe, updatePastrie, deletePastrie };

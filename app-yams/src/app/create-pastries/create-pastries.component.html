@@ -94,3 +94,5 @@
   
     <button type="submit" [disabled]="pastrieForm.invalid" class="btn btn-primary">Submit</button>
   </form>
+
+  <p *ngIf="newPastrie">Yes!! {{ newPastrie.name }} a bien été crée!!</p>

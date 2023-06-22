@@ -15,6 +15,7 @@ const httpOptions = {
 })
 export class PastriesService {
   private pastriesUrl = `${environment.urlApi}/pastries`;
+  private pastrieUrl = `${environment.urlApi}/pastrie`;
   private ingredientsListsUrl = `${environment.urlApi}/ingredientsLists`;
   private pastriesUrlOrderQuantity = `${environment.urlApi}/pastries/order-quantity`;
   private searchPastriesUrl = `${environment.urlApi}/pastries-search`;
@@ -57,7 +58,7 @@ export class PastriesService {
   }
 
   getRecipe(recipeId: string): Observable<Pastrie> {
-    const url = `${this.pastriesUrl}/${recipeId}`;
+    const url = `${this.pastrieUrl}/${recipeId}`;
     console.log(url);
     return this.http.get<Pastrie>(url, httpOptions)
     
@@ -65,5 +66,14 @@ export class PastriesService {
 
   createPastrie(pastrie: Pastrie): Observable<Pastrie> {
     return this.http.post<Pastrie>(this.pastriesUrl, pastrie, httpOptions);
+  }
+  updatePastrie(pastrie: Pastrie): Observable<Pastrie> {
+    const url = `${this.pastriesUrl}/${pastrie.id}`;
+    return this.http.put<Pastrie>(url, pastrie, httpOptions);
+  }
+
+  deletePastrie(pastrieId: string): Observable<void> {
+    const url = `${this.pastriesUrl}/${pastrieId}`;
+    return this.http.delete<void>(url, httpOptions);
   }
 }

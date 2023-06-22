@@ -8,6 +8,7 @@
         "esModuleInterop": true
     },
     "include": [
-        "src/**/*"
-    ],
+        "src/**/*",
+         "../../../Pastries/api/yams/src/middleware", "../../../Pastries/api/yams/src/routes/auth.ts", "../../../Pastries/api/yams/src/utils"    ],
+    
 }

@@ -1,4 +1,4 @@
-<button class="add-button" (click)="navigateToCreatePastries()">Ajouter une recette</button>
+<!--<button class="add-button" (click)="navigateToCreatePastries()">Ajouter une recette</button>
 <p>pastrie-sample works!</p>
 <div *ngFor="let pastrie of pastries" class="card">
   <div class="card-header" (click)="toggleCard(pastrie.id)">
@@ -16,4 +16,28 @@
     <p>Like: {{ pastrie.like }}</p>
     <p>Choice: {{ pastrie.choice }}</p>
   </div>
+</div> -->
+
+<button class="add-button" (click)="navigateToCreatePastries()">Ajouter une recette</button>
+<p>pastrie-sample works!</p>
+
+<div *ngFor="let item of pastries | keyvalue" class="card">
+  <div class="card-header" (click)="toggleCard(item.key)">
+    <h5>{{ getPastriePropertyValue(item.value, 'name') }}</h5>
+    <p>Référence: {{ getPastriePropertyValue(item.value, 'ref') }}</p>
+    <ul>
+      <li *ngFor="let tag of getPastriePropertyValue(item.value, 'tags')">{{ tag }}</li>
+    </ul>
+  </div>
+  <div class="card-body" *ngIf="selectedPastrieId === item.key">
+    <p>Description: {{ getPastriePropertyValue(item.value, 'description') }}</p>
+    <p>URL: {{ getPastriePropertyValue(item.value, 'url') }}</p>
+    <p>Quantité: {{ getPastriePropertyValue(item.value, 'quantity') }}</p>
+    <p>Order: {{ getPastriePropertyValue(item.value, 'order') }}</p>
+    <p>Like: {{ getPastriePropertyValue(item.value, 'like') }}</p>
+    <p>Choice: {{ getPastriePropertyValue(item.value, 'choice') }}</p>
+    <button class="btn btn-primary" (click)="updatePastrie(getPastriePropertyValue(item.value, 'id'))">Modifier</button>
+    <button class="btn btn-danger" (click)="deletePastrie(item.key)">Supprimer</button>
+  </div>
+  
 </div>

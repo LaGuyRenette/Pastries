@@ -84,8 +84,8 @@ router.get("/pastries-count", function (req: Request, res: Response) {
 //crud
 router.post('/pastries', recipeController.createPastrie);
 router.get('/pastries/:id', recipeController.getRecipe);
-router.put('/pastries/:id', recipeController.updateRecipe);
-router.delete('/pastries/:id', recipeController.deleteRecipe);
+router.put('/pastries/:id', recipeController.updatePastrie);
+router.delete('/pastries/:id', recipeController.deletePastrie);
 
 
 router.get('*', function (req: Request, res: Response) {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PastriesService } from '../pastries.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-pastries',
@@ -8,9 +9,10 @@ import { PastriesService } from '../pastries.service';
   styleUrls: ['./create-pastries.component.scss']
 })
 export class CreatePastriesComponent {
+  newPastrie: any = null;
   pastrieForm: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder, private ps: PastriesService) { }
+  constructor(private fb: FormBuilder, private ps: PastriesService, private router: Router) { }
   ngOnInit(): void {
     this.pastrieForm = this.fb.group({
       name: ['', Validators.required],
@@ -27,9 +29,11 @@ export class CreatePastriesComponent {
   submitForm(): void {
     if (this.pastrieForm.valid) {
       const formData = this.pastrieForm.value;
-      this.ps.createPastrie(formData).subscribe(() => {
-        // Réinitialisez le formulaire ou effectuez une autre action après la création réussie de la pâtisserie
+      this.ps.createPastrie(formData).subscribe((newPastrie) => {
         this.pastrieForm.reset();
+        this.newPastrie = newPastrie; 
+        console.log('Nouvelle pâtisserie créée:', newPastrie);
+        this.router.navigate(['/sample'], { queryParams: { pastry: JSON.stringify(newPastrie) } });
       });
     }
   }
