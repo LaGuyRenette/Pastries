@@ -37,5 +37,8 @@ export class CreatePastriesComponent {
       });
     }
   }
+  goBack() {
+    history.back();
+  }
 
 }

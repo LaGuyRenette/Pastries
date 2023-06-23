@@ -68,7 +68,10 @@ export class UpdatePastrieComponent implements OnInit {
     };
 
     this.pastriesService.updatePastrie(updatedPastrie).subscribe(() => {
-      this.router.navigate(['/pastries']);
+      this.router.navigate(['/sample']);
     });
+  }
+  goBack() {
+    history.back();
   }
 }

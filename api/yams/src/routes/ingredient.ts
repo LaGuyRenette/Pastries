@@ -1,5 +1,5 @@
 import express, { Router, Request, Response } from "express";
-import { INGREDIENTS_LISTS as ingredients } from "./../mocks";
+import { INGREDIENTS_LISTS as ingredients } from "../mocks/mocks";
 import { List } from "./../pastrie";
 
 const router: Router = express.Router();

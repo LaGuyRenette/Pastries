@@ -49,8 +49,9 @@ export class RegisterComponent {
     this.user.address = this.userForm.value.address ?? '';
 
     this.us.createUser(this.user).subscribe(user => {
+      console.log(user);
 
-      this.router.navigate(['/home'], { queryParams: { message: 'success' } });
+      this.router.navigate(['/login'], { queryParams: { message: 'success' } });
     })
   }
 

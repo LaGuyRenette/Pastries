@@ -1,5 +1,5 @@
 import express, { Router, Request, Response } from "express";
-import { PASTRIES as pastries } from "./../mocks";
+import { PASTRIES as pastries } from "../mocks/mocks";
 import { Pastrie } from "./../pastrie";
 import * as recipeController from "../controllers/recipeControllers";
 
@@ -28,14 +28,6 @@ router.get("/pastries", function (req: Request, res: Response) {
     //res.json(pastries);
 });
 
-// id pastries
-router.get("/pastrie/{id}", function (req: Request, res: Response) {
-    const id: string = req.params.id
-    const p: Pastrie | undefined = pastries.find(p => p.id == id);
-    sendResponse(res, p)
-
-    //if (p){res.json(p);}else{res.sendStatus(404);}
-});
 
 router.get("/pastries-search/:word", function (req: Request, res: Response) {
     const word: string = req.params.word;
@@ -83,7 +75,7 @@ router.get("/pastries-count", function (req: Request, res: Response) {
 });
 //crud
 router.post('/pastries', recipeController.createPastrie);
-router.get('/pastries/:id', recipeController.getRecipe);
+router.get('/pastrie/:id', recipeController.getRecipe);
 router.put('/pastries/:id', recipeController.updatePastrie);
 router.delete('/pastries/:id', recipeController.deletePastrie);
 

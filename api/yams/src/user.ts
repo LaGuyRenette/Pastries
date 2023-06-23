@@ -1,11 +1,11 @@
 export enum Status {
-    Winner,
-    Loser,
+    Admin = 'admin',
+    Client = 'client'
 }
 
 export interface User {
     name: string;
     email: string;
     address: string;
-    status?: Status;
+    status: Status;
 }

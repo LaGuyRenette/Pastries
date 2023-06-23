@@ -37,6 +37,7 @@ export class PastrieSampleComponent {
   }
 
   toggleCard(pastrieId: string): void {
+    console.log(this.selectedPastrieId)
     if (this.selectedPastrieId === pastrieId) {
       this.selectedPastrieId = null; // Ferme la card si elle est déjà ouverte
     } else {
@@ -69,6 +70,11 @@ export class PastrieSampleComponent {
         this.selectedPastrie = null;
       });
     }
+  }
+  getCardColor(index: number): string {
+    const colors = ['#f6bd60', '#f7ede2', '#f5cac3', '#84a59d', '#f28482'];
+    const colorIndex = index % colors.length;
+    return colors[colorIndex];
   }
   
 }

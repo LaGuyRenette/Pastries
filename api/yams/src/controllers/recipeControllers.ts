@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { Pastrie } from '../pastrie';
-import { PASTRIES } from '../mocks';
+import { PASTRIES } from '../mocks/mocks';
 
 let recipes : Pastrie[]= PASTRIES; //tableau pour stocker mes pastries
 const { v4: uuidv4 } = require('uuid');
@@ -9,7 +9,7 @@ const { v4: uuidv4 } = require('uuid');
 
 export const createPastrie = (req: Request,res: Response)=> {
     
-    const{ ref, name, description,quantity, order, like, tags} = req.body;
+    const{ ref, name, description,quantity, order,url, like, tags} = req.body;
 
     //nouveau objet
    const newRecipe ={
@@ -18,6 +18,7 @@ export const createPastrie = (req: Request,res: Response)=> {
         name,
         description,
         quantity,
+        url,
         order,
         like,
         tags,
@@ -44,7 +45,7 @@ export const createPastrie = (req: Request,res: Response)=> {
   // Mettre à jour une recette
   export const updatePastrie = (req: Request, res: Response) => {
     const recipeId = req.params.id;
-    const { ref, name, description, quantity, order, like, tags } = req.body;
+    const { ref, name, description, quantity, order,url, like, tags } = req.body;
   
     // Rechercher la recette dans le tableau des recettes en fonction de son ID
     const recipe = recipes.find((recipe) => recipe.id === recipeId);
@@ -58,6 +59,7 @@ export const createPastrie = (req: Request,res: Response)=> {
       recipe.description = description;
       recipe.quantity = quantity;
       recipe.order = order;
+      recipe.url=url;
       recipe.like = like;
       recipe.tags = tags;
   

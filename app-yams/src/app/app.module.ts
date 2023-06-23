@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { PastrieSampleComponent } from './pastrie-sample/pastrie-sample.component';
 import { CreatePastriesComponent } from './create-pastries/create-pastries.component';
 import { UpdatePastrieComponent } from './update-pastrie/update-pastrie.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { UpdatePastrieComponent } from './update-pastrie/update-pastrie.componen
     PastrieSampleComponent,
     CreatePastriesComponent,
     UpdatePastrieComponent,
+    LoginComponent,
 
   ],
   imports: [

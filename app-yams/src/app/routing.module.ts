@@ -7,6 +7,7 @@ import { PastrieSampleComponent } from './pastrie-sample/pastrie-sample.componen
 import { CreatePastriesComponent } from './create-pastries/create-pastries.component';
 import { PastrieDetailsComponent } from './pastrie-details/pastrie-details.component';
 import { UpdatePastrieComponent } from './update-pastrie/update-pastrie.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'sample', component: PastrieSampleComponent},
   {path:'createPastrie', component: CreatePastriesComponent},
   { path: 'updatePastrie/:id', component: UpdatePastrieComponent },
+  {path:'login', component:LoginComponent},
   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 
